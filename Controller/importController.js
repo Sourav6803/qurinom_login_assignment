@@ -143,6 +143,8 @@ const imports = async (req, res) => {
   
       let page = req.query.page ;
       let limit = req.query.limit ;
+
+      const count = await importModel.find(filter).count()
   
       const findData = await importModel
         .find(filter)
@@ -150,7 +152,7 @@ const imports = async (req, res) => {
         .skip((page - 1) * limit);
         if(!findData.length ) return res.status(400).send({message: "No Data Found"})
   
-      res.status(200).send({ count: findData.length, data: findData });
+      res.status(200).send({status: true, count: count, data: findData });
     } catch (err) {
       return res.status(500).send({ status: false, message: err.message });
     }
