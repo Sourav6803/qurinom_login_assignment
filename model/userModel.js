@@ -17,23 +17,12 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    profileImage: {
-        type: String
-    },
-   
-    gender:{
-        type: String,
-        required: true,
-        enum: ["Male","Female", "Other"]
-    },
 
     password: {
         type: String,
         required: true
     },
-    address:{
-        type: String
-    },
+    
     
 }, { timestamps: true })
 

@@ -36,13 +36,7 @@ const registerAUser = async (req, res) => {
             return res.status(400).send({ status: false, message: "Please provide password" })
         }
 
-        if (!req.body.gender) {
-            return res.status(400).send({ status: false, message: "Please provide gender" })
-        }
-
-        if (!req.body.address) {
-            return res.status(400).send({ status: false, message: "Please provide address" })
-        }
+        
 
         const findUser = await User.findOne({ email: email })
         const usedNuber = await User.findOne({ mobile: req.body.mobile })
@@ -51,9 +45,7 @@ const registerAUser = async (req, res) => {
         }
 
         if (findUser) {
-            if (findUser.fullName == req.body.fullName) {
-                return res.status(400).send({ message: "This name already exist with this email." })
-            }
+            
 
             if (findUser?.mobile === req.body.mobile) {
                 return res.status(400).send({ message: "Mobile no already exist with this email." })
@@ -66,21 +58,6 @@ const registerAUser = async (req, res) => {
         else {
             if (!isValid(email)) return res.status(400).send({ status: false, message: "please enter email in string format" })
             if (!/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/.test(email)) return res.status(400).send({ status: false, message: "please enter valid email" })
-
-            const files = req.files;
-            if (!files || !files.length > 0) return res.status(400).send({ status: false, message: "please enter profileImage" })
-            //if (!files ) return res.status(400).send({ status: false, message: "please enter profileImage" })
-            const myFile = files[0]
-
-            //********uploading image to aws*******/
-
-
-
-            const uploadImage = await file.uploadFile(myFile)
-
-            req.body.profileImage = uploadImage;
-            if (!req.body.profileImage) return res.status(400).send({ status: false, message: "please add profile Image" })
-
 
 
             let msg = "Thanks , we have appreceate that you have taken time to write us <br/>[Qurinom Solutions]"
