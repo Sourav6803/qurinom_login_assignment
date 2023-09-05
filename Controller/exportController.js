@@ -6,10 +6,12 @@ const path = require('path');
 
 
 const exportData = async (req, res) => {
-
+   
     const totalRecords = [];
     try {
-      console.log(path.join(__dirname, '../', '/public/csv/' + req.file.filename))
+      
+      // console.log(path.join(__dirname, '../', '/public/csv/' + req.file.filename))
+      console.log("huuu")
       fs.createReadStream(path.join(__dirname, '../', '/public/csv/' + req.file.filename))
         .pipe(csv.parse({ headers: true }))
         .on('error', error => console.error(error))
@@ -168,9 +170,6 @@ const exportData = async (req, res) => {
       return res.status(500).send({ status: false, message: err.message })
     }
   }
-  
-  
-  
   
   
 
