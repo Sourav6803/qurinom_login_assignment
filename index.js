@@ -24,7 +24,7 @@ app.get('/', (req,res)=>{
 })
 
 
-mongoose.connect("mongodb+srv://rick07539:iw5HHRv4JdunwlUR@cluster0.ffmnsa4.mongodb.net/dumping?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://dumpingdata:DumpingData98@cluster0.1lj4fxy.mongodb.net/dumpingdata", {
     useNewUrlParser: true
 }) 
 .then( () => console.log("MongoDb is connected"))
