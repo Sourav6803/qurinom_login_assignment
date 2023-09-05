@@ -23,6 +23,7 @@ app.get('/', (req,res)=>{
     res.send("hello world")
 })
 
+
 mongoose.connect("mongodb+srv://rick07539:iw5HHRv4JdunwlUR@cluster0.ffmnsa4.mongodb.net/dumping?retryWrites=true&w=majority", {
     useNewUrlParser: true
 }) 
